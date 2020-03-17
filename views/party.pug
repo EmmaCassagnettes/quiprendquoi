@@ -6,7 +6,10 @@ label(for="url") Partagez l'événement
 input(id="url" value=`${url}`)
 ul
   each item in party.items
-    li= `${item.user} : ${item.name}`
+    li
+      form(method="post" action=`/party/${party._id}/items/${item._id}`)
+        h4= `${item.user} : ${item.name}`
+        button(type="submit") Supprimer
 form(method="post" action=`/party/${party._id}/items`)
   div
     label(for="name") Ajouter un item à l'événément
