@@ -18,6 +18,13 @@ app.post('/party', (req, res) => {
   .catch((err) => res.send(err));
 });
 
+app.post('/party/:id/items', (req, res) => {
+  axios
+  .post(`${ process.env.API_URL }/party/${req.params.id}/items`, req.body)
+  .then(() => res.redirect(`/party/${req.params.id}`))
+  .catch((err) => res.send(err));
+});
+
 app.get('/party/:id', (req, res) => {
   axios
   .get(`${process.env.API_URL}/party/${req.params.id}`)

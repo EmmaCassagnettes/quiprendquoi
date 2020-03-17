@@ -4,3 +4,11 @@ h2= party.name
 h3 Créé par #{party.author}
 label(for="url") Partagez l'événement
 input(id="url" value=`${url}`)
+form(method="post" action=`/party/${party._id}/items`)
+  div
+    label(for="name") Ajouter un item à l'événément
+    input(name="name" id="name" minlength="3" placeholder="Nouvel an" required)
+  div
+    label(for="user") Auteur de l'ajout
+    input(name="user" id="user" minlength="3" placeholder="Emma" required)
+  button(type="submit") Envoyer
