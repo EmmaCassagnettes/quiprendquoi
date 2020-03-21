@@ -9,5 +9,24 @@
   <body>
     <h1>Whoops !</h1>
     <h2>The Internet connection appears to be offline.</h2>
+  <script>
+    caches.open('parties').then((cache) =>
+      cache.keys().then((keys) =>
+        keys.forEach((key) => {
+          const name = localStorage.getItem(key.url);
+          console.log(key, name);
+
+          if (name) {
+            const $link = document.createElement('a');
+            const $ul = document.createElement('ul');
+            $link.href = key.url;
+            $link.innerHTML = name;
+            document.body.appendChild($link);
+            document.body.insertBefore($ul, $link);
+          }
+        })
+      )
+    );
+  </script>
   </body>
 </html>
