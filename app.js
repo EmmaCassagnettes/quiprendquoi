@@ -27,6 +27,13 @@ app.post('/party/:id/items', (req, res) => {
   .catch((err) => res.send(err));
 });
 
+app.post('/party/:id/items/:idItem', (req, res) => {
+  axios
+  .delete(`${ process.env.API_URL }/party/${req.params.id}/items/${req.params.idItem}`, req.body)
+  .then(() => res.redirect(`/party/${req.params.id}`))
+  .catch((err) => res.send(err));
+});
+
 app.get('/party/:id', (req, res) => {
   axios
   .get(`${process.env.API_URL}/party/${req.params.id}`)
